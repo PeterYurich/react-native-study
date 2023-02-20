@@ -1,15 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { TouchableWithoutFeedback, Keyboard, Text, View } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard, Text, View, Button } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font'
 import { NavigationContainer } from '@react-navigation/native';
 import { useCallback } from 'react';
-
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import HomeScreen from './src/screens/HomeScreen'
+import LoginScreen from './src/screens/LoginScreen';
+import RegisterScreen from './src/screens/RegisterScreen';
+// import asdf from './screens/asdf';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -17,7 +17,7 @@ export default function App() {
     "NotoSerif-Bold": require("./assets/fonts/NotoSerif/NotoSerif-Bold.ttf"),
     "ShantellSans-Regular": require("./assets/fonts/ShantellSans/ShantellSans-Regular.ttf")
   })
-
+0
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync()
@@ -27,9 +27,6 @@ export default function App() {
   if (!fontsLoaded) {
     return null
   }
-
-  // Text.defaultProps = Text.defaultProps || {}
-  // Text.defaultProps.style =  { fontFamily: 'ShantellSans-Regular' }
 
   const MainStack = createStackNavigator()
 
@@ -41,13 +38,31 @@ export default function App() {
       >
 
         <MainStack.Navigator initialRouteName="Home">
-          <MainStack.Screen name="Registration" component={RegisterPage} />
-          <MainStack.Screen name="Login" component={LoginPage}
+          <MainStack.Screen name="Registration" component={RegisterScreen} />
+          <MainStack.Screen name="Login" component={LoginScreen}
             options={{ title: 'Enter the application' }}
           />
-          <MainStack.Screen name="Home" component={HomePage} />
+          <MainStack.Screen name="Home" component={HomeScreen}
+            options={{
+              title: "Home screen",
+              headerStyle: {
+                backgroundColor: "#072d31",
+              },
+              headerTintColor: "#fff",
+              headerTitleStyle: {
+                fontWeight: "bold",
+                fontSize: 20,
+              },
+              headerRight: () => (
+                <Button
+                  onPress={() => alert("This is a button!")}
+                  title="Press me"
+                  color="#86ACB0"
+                />
+              ),
+            }} />
         </MainStack.Navigator>
-        {/* <View style={{height: '100%', width: '100%', backgroundColor: 'green'}} /> */}
+        {/* <View style={{height: '100%', width: '100%', backgroundColor: 'green', zIndex: -2}} /> */}
 
       </TouchableWithoutFeedback>
       <StatusBar style="auto" />

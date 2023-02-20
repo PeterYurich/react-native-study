@@ -6,34 +6,28 @@ import {
   Image, Keyboard, TouchableWithoutFeedback,
   ImageBackground,
 } from 'react-native';
-import { css } from '../styles';
+import { css } from '../../styles';
 import { useRef, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { useFonts } from 'expo-font'
 
+import { Ionicons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Settings } from '../components';
+import { Profile } from '../components';
+
 SplashScreen.preventAutoHideAsync()
 
-export default function HomePage() {
+import React from 'react'
+
+const Tabs = createBottomTabNavigator()
+
+
+export default function HomeScreen() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const usernameInput = useRef()
-
-  const [fontsLoaded] = useFonts({
-    "NotoSerif-Regular": require("../assets/fonts/NotoSerif/NotoSerif-Regular.ttf"),
-    "NotoSerif-Bold": require("../assets/fonts/NotoSerif/NotoSerif-Bold.ttf"),
-    "ShantellSans-Regular": require("../assets/fonts/ShantellSans/ShantellSans-Regular.ttf")
-  })
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync()
-    }
-  }, [fontsLoaded])
-
-  if (!fontsLoaded) {
-    return <View style={{height: 200, width: 200, backgroundColor: 'red'}} />
-  }
 
   const nameHandler = (text) => setName(text);
   const passwordHandler = (text) => setPassword(text);
@@ -49,6 +43,7 @@ export default function HomePage() {
 
   const onSubmitPassword = (e) => {
   }
+
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -66,12 +61,11 @@ export default function HomePage() {
           marginBottom: 20,
           padding: 10
         }}
-          // onLayout={onLayoutRootView}
         >
           <Text>Default font</Text>
           <Image
             style={{ width: 100, height: 100, borderRadius: 20, }}
-            source={require('../assets/girl.png')} />
+            source={require('../../assets/girl.png')} />
           <Image source={{ uri: 'https://reactjs.org/logo-og.png' }}
             style={{ width: 100, height: 100, marginTop: 10, borderRadius: 20 }} />
           <Text style={{ fontFamily: 'ShantellSans-Regular' }}>ShantellSans-Regular</Text>
@@ -102,7 +96,7 @@ export default function HomePage() {
             multiline={false}
           />
           <Button
-            title={"login"}
+            title={"pop up"}
             onPress={onLogin} />
           <Text style={{ color: '#fff' }}>Default font</Text>
           <TouchableHighlight
@@ -117,6 +111,31 @@ export default function HomePage() {
             >TouchableHighlight</Text>
           </TouchableHighlight>
         </KeyboardAvoidingView>
+
+        <Tabs.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+
+              if (route.name === "Profile") {
+                iconName = focused
+                  ? "ios-information-circle"
+                  : "ios-information-circle-outline";
+              } else if (route.name === "Settings") {
+                iconName = focused ? "settings" : "ios-settings-outline";
+              }
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: "tomato",
+            inactiveTintColor: "gray",
+          }}
+        >
+          <Tabs.Screen name="Settings" component={Settings} />
+          <Tabs.Screen name="Profile" component={Profile} />
+        </Tabs.Navigator>
+
       </View>
     </TouchableWithoutFeedback>
   );

@@ -6,10 +6,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useCallback } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeScreen from './src/screens/HomeScreen'
-import LoginScreen from './src/screens/LoginScreen';
-import RegisterScreen from './src/screens/RegisterScreen';
-// import asdf from './screens/asdf';
+import HomeScreen from '@app/screens/HomeScreen'
+import LoginScreen from '@app/screens/LoginScreen';
+import RegisterScreen from '@app/screens/RegisterScreen';
+import asdf from '@app/asdf';
 
 export default function App() {
   const [fontsLoaded] = useFonts({

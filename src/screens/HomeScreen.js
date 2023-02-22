@@ -14,8 +14,8 @@ import { useFonts } from 'expo-font'
 
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Settings } from '../components';
-import { Profile } from '../components';
+import { Settings } from '@app/components';
+import { Profile } from '@app/components';
 
 SplashScreen.preventAutoHideAsync()
 

@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
 
-
 const LoginScreen = ({ navigation, route }) => {
 
     let userId = '321'
@@ -16,8 +15,6 @@ const LoginScreen = ({ navigation, route }) => {
             <Text>Login Screen</Text>
             <Text>User Id {userId}</Text>
             <Button title="Go to Home" onPress={() => navigation.navigate("Home")} />
-
-
         </View>
 
 

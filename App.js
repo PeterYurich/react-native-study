@@ -11,6 +11,8 @@ import LoginScreen from '@app/screens/LoginScreen';
 import RegisterScreen from '@app/screens/RegisterScreen';
 import asdf from '@app/asdf';
 
+const MainStack = createStackNavigator()
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     "NotoSerif-Regular": require("./assets/fonts/NotoSerif/NotoSerif-Regular.ttf"),
@@ -28,7 +30,6 @@ export default function App() {
     return null
   }
 
-  const MainStack = createStackNavigator()
 
   return (
     <NavigationContainer>

@@ -9,8 +9,9 @@ import * as SplashScreen from 'expo-splash-screen';
 
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Settings } from '@app/components';
-import { Profile } from '@app/components';
+
+import SettingsScreen from './SettingsScreen'
+import ProfileScreen from './ProfileScreen';
 
 // SplashScreen.preventAutoHideAsync()
 
@@ -31,7 +32,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View >
-      <View
+      {/* <View
         // style={css.container}
       >
         <ImageBackground
@@ -68,7 +69,7 @@ export default function HomeScreen({ navigation }) {
         </TouchableHighlight>
       </View>
       <View style={{flex: 1, backgroundColor: 'red', height: 500, width: 50}}>
-      </View>
+      </View> */}
 
       <NavigationContainer independent={true}>
         <Tabs.Navigator
@@ -98,8 +99,8 @@ export default function HomeScreen({ navigation }) {
             ]
           }}
         >
-          <Tabs.Screen name="Settings" component={Settings} />
-          <Tabs.Screen name="Profile" component={Profile} />
+          <Tabs.Screen name="Settings" component={SettingsScreen} />
+          <Tabs.Screen name="Profile" component={ProfileScreen} />
         </Tabs.Navigator>
       </NavigationContainer>
     </View>

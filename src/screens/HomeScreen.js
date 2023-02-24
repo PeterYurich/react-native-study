@@ -87,17 +87,13 @@ export default function HomeScreen({ navigation }) {
               }
               return <Ionicons name={iconName} size={size} color={color} />;
             },
-          })}
-          tabBarOptions={{
-            activeTintColor: "tomato",
-            inactiveTintColor: "gray",
-            "tabBarStyle": [
-              {
-                "display": "flex"
-              },
-              null
-            ]
-          }}
+            tabBarOptions: {
+              activeTintColor: "tomato",
+              inactiveTintColor: "gray",
+            }
+          })
+        }
+
         >
           <Tabs.Screen name="Settings" component={SettingsScreen} />
           <Tabs.Screen name="Profile" component={ProfileScreen} />

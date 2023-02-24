@@ -23,7 +23,7 @@ const RegisterScreen = ({ navigation }) => {
     <TouchableWithoutFeedback
       onPress={Keyboard.dismiss}
     >
-      <View style={styles.container}>
+      <View style={css.container}>
         <Text>Register Screen</Text>
         <Button
           title="Go to Login"
@@ -66,13 +66,5 @@ const RegisterScreen = ({ navigation }) => {
 
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default RegisterScreen;

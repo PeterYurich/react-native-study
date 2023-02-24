@@ -16,6 +16,7 @@ import { Profile } from '@app/components';
 
 import React from 'react'
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
 
 const Tabs = createBottomTabNavigator()
 
@@ -30,8 +31,8 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View >
-      {/* <View
-        style={css.container}
+      <View
+        // style={css.container}
       >
         <ImageBackground
           style={{ width: '100%', height: "100%", position: 'absolute', zIndex: -1 }}
@@ -65,32 +66,42 @@ export default function HomeScreen({ navigation }) {
             style={{ fontFamily: 'NotoSerif-Regular' }}
           >To register</Text>
         </TouchableHighlight>
-      </View> */}
+      </View>
+      <View style={{flex: 1, backgroundColor: 'red', height: 500, width: 50}}>
+      </View>
 
-      <Tabs.Navigator
-        // style={{position: 'absolute', bottom: 10}}
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === "Profile") {
-              iconName = focused
-                ? "ios-information-circle"
-                : "ios-information-circle-outline";
-            } else if (route.name === "Settings") {
-              iconName = focused ? "settings" : "ios-settings-outline";
-            }
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: "tomato",
-          inactiveTintColor: "gray",
-        }}
-      >
-        <Tabs.Screen name="Settings" component={Settings} />
-        <Tabs.Screen name="Profile" component={Profile} />
-      </Tabs.Navigator>
+      <NavigationContainer independent={true}>
+        <Tabs.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              if (route.name === "Profile") {
+                iconName = focused
+                  ? "person-circle"
+                  : "person-circle-outline";
+              } else if (route.name === "Settings") {
+                iconName = focused
+                  ? "cog"
+                  : "cog-outline";
+              }
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: "tomato",
+            inactiveTintColor: "gray",
+            "tabBarStyle": [
+              {
+                "display": "flex"
+              },
+              null
+            ]
+          }}
+        >
+          <Tabs.Screen name="Settings" component={Settings} />
+          <Tabs.Screen name="Profile" component={Profile} />
+        </Tabs.Navigator>
+      </NavigationContainer>
     </View>
 
   );

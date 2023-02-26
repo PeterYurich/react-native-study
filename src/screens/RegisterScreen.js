@@ -18,9 +18,9 @@ const RegisterScreen = ({ navigation }) => {
   const passwordHandler = (text) => setPassword(text);
 
   const dispatch = useDispatch()
-  // const onRegister = () => {
-  //   dispatch(authRegister({email, password}))
-  // }
+  const onRegister = () => {
+    dispatch(authRegister({email, password}))
+  }
 
 
   return (

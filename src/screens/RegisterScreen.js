@@ -4,20 +4,24 @@ import { View, Text, StyleSheet, Button, KeyboardAvoidingView, TouchableWithoutF
 import { TextInput } from "react-native-gesture-handler";
 import { css } from "../styles"
 
+import { useDispatch } from "react-redux";
+import { authRegister } from "@app/redux/auth/authOperations";
+
 const RegisterScreen = ({ navigation }) => {
-  const [name, setName] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const usernameInput = useRef()
-  const nameHandler = (text) => setName(text);
+
+  const nameHandler = (text) => setNickname(text);
+  const emailHandler = (text) => setEmail(text);
   const passwordHandler = (text) => setPassword(text);
 
-  const onLogin = () => {
-    Alert.alert("Credentials", `${name} + ${password}`);
-    usernameInput.current.clear()
-  };
+  const dispatch = useDispatch()
+  // const onRegister = () => {
+  //   dispatch(authRegister({email, password}))
+  // }
 
-  const onSubmitPassword = (e) => {
-  }
 
   return (
     <TouchableWithoutFeedback
@@ -34,7 +38,7 @@ const RegisterScreen = ({ navigation }) => {
           behavior={Platform.OS == "ios" ? "padding" : "height"}
         >
           <TextInput
-            value={name}
+            value={nickname}
             onChangeText={nameHandler}
             placeholder="Username"
             style={css.input}
@@ -45,19 +49,23 @@ const RegisterScreen = ({ navigation }) => {
             selectionColor="red"
           />
           <TextInput
+            value={email}
+            onChangeText={emailHandler}
+            placeholder="Email"
+            style={css.input}
+          />
+          <TextInput
             value={password}
             onChangeText={passwordHandler}
             placeholder="Password"
             secureTextEntry={true}
             style={css.input}
-            onSubmitEditing={onSubmitPassword}
-            keyboardType='numeric'
-            maxLength={4}
+            // onSubmitEditing={onSubmitPassword}
             multiline={false}
           />
           <Button
-            title={"pop up"}
-            onPress={onLogin} />
+            title={"Register"}
+            onPress={onRegister} />
           <Text style={{ color: '#fff' }}>Default font</Text>
 
         </KeyboardAvoidingView>

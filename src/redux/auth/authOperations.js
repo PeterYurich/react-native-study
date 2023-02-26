@@ -13,6 +13,7 @@ export const authRegister = ({ email, password }) => async (
     }
 }
 
+
 export const authLogin = () => async (dispatch, getState) => { }
 
 export const authLogout = () => async (dispatch, getState) => { }

@@ -14,11 +14,10 @@ const LoginScreen = ({ navigation, route }) => {
 
 
     let userId = '321'
-    // if (route.params.userId) {
-    //     userId = route.params.userId;
-    // }
+
     const onLogin = () => {
         dispatch(authLogin({email, password}))
+
     }
 
 

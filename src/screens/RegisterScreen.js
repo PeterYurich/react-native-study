@@ -1,7 +1,7 @@
 
 import React, { useRef, useState } from "react";
 import {
-  View, Text, StyleSheet, Button, KeyboardAvoidingView,
+  View, Text, Button, KeyboardAvoidingView,
   TouchableWithoutFeedback, Keyboard
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";

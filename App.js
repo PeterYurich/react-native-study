@@ -20,7 +20,7 @@ export default function App() {
     "NotoSerif-Bold": require("./assets/fonts/NotoSerif/NotoSerif-Bold.ttf"),
     "ShantellSans-Regular": require("./assets/fonts/ShantellSans/ShantellSans-Regular.ttf")
   })
-  0
+  
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync()
@@ -31,7 +31,6 @@ export default function App() {
     return null
   }
 
-
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -39,7 +38,7 @@ export default function App() {
           onPress={Keyboard.dismiss}
           onLayout={onLayoutRootView}
         >
-          {/* <MainStack.Navigator initialRouteName="Home">
+          <MainStack.Navigator initialRouteName="Home">
             <MainStack.Screen name="Registration" component={RegisterScreen} />
             <MainStack.Screen name="Login" component={LoginScreen}
               options={{ title: 'Enter the application' }}
@@ -63,8 +62,8 @@ export default function App() {
                   />
                 ),
               }} />
-          </MainStack.Navigator> */}
-          <View style={{ height: '100%', width: '100%', backgroundColor: 'green', zIndex: -2 }} />
+          </MainStack.Navigator>
+          {/* <View style={{ height: '100%', width: '100%', backgroundColor: 'green', zIndex: -2 }} /> */}
         </TouchableWithoutFeedback>
         <StatusBar style="auto" />
       </NavigationContainer>

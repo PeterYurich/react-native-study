@@ -26,7 +26,7 @@ export const authLogin = createAsyncThunk('login',
             const { user } = await signInWithEmailAndPassword(auth, email, password)
             const asdf = JSON.stringify(user)
             return asdf
-        } catch (error) {erro
+        } catch (error) {
             console.log('error', error.message);
             return rejectWithValue(error)
         }

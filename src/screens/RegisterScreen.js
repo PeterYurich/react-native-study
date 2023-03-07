@@ -1,6 +1,9 @@
 
 import React, { useRef, useState } from "react";
-import { View, Text, StyleSheet, Button, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+  View, Text, Button, KeyboardAvoidingView,
+  TouchableWithoutFeedback, Keyboard
+} from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { css } from "../styles"
 
@@ -19,7 +22,8 @@ const RegisterScreen = ({ navigation }) => {
 
   const dispatch = useDispatch()
   const onRegister = () => {
-    dispatch(authRegister({email, password}))
+    dispatch(authRegister({ email, password }))
+    // navigation.navigate("Login")
   }
 
 

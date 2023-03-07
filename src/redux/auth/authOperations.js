@@ -1,19 +1,43 @@
-import { db, auth } from "@app/firebaseConfig"
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { db } from "@app/firebaseConfig"
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
+} from "firebase/auth";
 
-export const authRegister = ({ email, password }) => async (
-    dispatch, getState) => {
-    console.log('email, password: ', email, password);
-    try {
-        const user = await createUserWithEmailAndPassword(auth, email, password)
-        console.log('user: ', user);
-    } catch (error) {
-        console.log('error', error);
-        console.log('error.message', error.message);
-    }
-}
+const auth = getAuth(db)
+
+export const authRegister = createAsyncThunk('register',
+    async ({ email, password }, { rejectWithValue }) => {
+        try {
+            const { user } = await createUserWithEmailAndPassword(auth, email, password)
+            return user
+        } catch (error) {
+            console.log('error', error.message);
+            return rejectWithValue(error)
+        }
+    })
 
 
-export const authLogin = () => async (dispatch, getState) => { }
+export const authLogin = createAsyncThunk('login',
+    async ({ email, password }, { rejectWithValue }) => {
+        try {
+            const { user } = await signInWithEmailAndPassword(auth, email, password)
+            const asdf = JSON.stringify(user)
+            return asdf
+        } catch (error) {
+            console.log('error', error.message);
+            return rejectWithValue(error)
+        }
+    })
+// ({ email, password }) => async (dispatch, getState) => {
+//     try {
+//         const { } = await signInWithEmailAndPassword(auth, email, password)
+//     } catch (error) {
+//         console.log('error', error);
+//         console.log('error.message', error.message);
+//     }
+// }
 
 export const authLogout = () => async (dispatch, getState) => { }

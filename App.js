@@ -20,7 +20,7 @@ export default function App() {
     "NotoSerif-Bold": require("./assets/fonts/NotoSerif/NotoSerif-Bold.ttf"),
     "ShantellSans-Regular": require("./assets/fonts/ShantellSans/ShantellSans-Regular.ttf")
   })
-0
+  
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync()
@@ -30,7 +30,6 @@ export default function App() {
   if (!fontsLoaded) {
     return null
   }
-
 
   return (
     <Provider store={store}>
@@ -64,7 +63,7 @@ export default function App() {
                 ),
               }} />
           </MainStack.Navigator>
-          {/* <View style={{height: '100%', width: '100%', backgroundColor: 'green', zIndex: -2}} /> */}
+          {/* <View style={{ height: '100%', width: '100%', backgroundColor: 'green', zIndex: -2 }} /> */}
         </TouchableWithoutFeedback>
         <StatusBar style="auto" />
       </NavigationContainer>

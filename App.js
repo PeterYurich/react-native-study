@@ -65,7 +65,7 @@ export default function App() {
           </MainStack.Navigator>
           {/* <View style={{ height: '100%', width: '100%', backgroundColor: 'green', zIndex: -2 }} /> */}
         </TouchableWithoutFeedback>
-        {/* <StatusBar style="auto" /> */}
+        <StatusBar style="auto" />
       </NavigationContainer>
     </Provider>
   );

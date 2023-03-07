@@ -10,7 +10,6 @@ import { selectAuth } from '@app/redux/auth/authSelectors';
 
 export default function ProfileScreen() {
   const { email } = useSelector(selectAuth)
-  console.log('email from ProfileScreen: ', email);
 
   return (
     <View style={css.container}>

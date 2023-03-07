@@ -20,7 +20,6 @@ export const authSlice = createSlice({
             state.isLoading = false
             state.userId = payload.uid
             state.email = payload.email
-            console.log('payload.email: ', payload.email);
         })
         .addCase(authRegister.rejected, (state, { payload }) => {
             state.isLoading = false
@@ -34,7 +33,6 @@ export const authSlice = createSlice({
             state.email = asdf.email
             state.isLoading = false
             state.userId = asdf.uid
-            console.log('payload.email: ', asdf.email);
         })
         .addCase(authLogin.rejected, (state, { payload }) => {
             state.isLoading = false
